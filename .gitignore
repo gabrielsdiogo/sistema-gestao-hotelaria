@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyd
+*.pyo
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Banco de dados
+instance/database.db
+*.sqlite3
+
+# Uploads
+static/uploads/
+
+# Ambiente
+.env
+.venv
+.env.local
+.env.development
+.env.test
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
