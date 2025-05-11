@@ -1,0 +1,8 @@
+flask==2.3.2
+flask-sqlalchemy==3.0.3
+flask-migrate==4.0.4
+flask-wtf==1.0.1
+python-dotenv==1.0.0
+pillow==11.2.1  # Use esta versão que já está instalada
+werkzeug==2.3.6
+email_validator==2.1.1  # Adicione esta linha

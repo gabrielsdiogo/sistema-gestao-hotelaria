@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Nova Ordem de Compra{% endblock %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="card shadow">
+    <div class="card-body">
+        <h2 class="card-title mb-4">
+            <i class="bi bi-cart-check-fill me-2"></i>Nova Ordem de Compra
+        </h2>
+        
+        <form method="POST" action="{{ url_for('main.nova_ordem_compra') }}">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.orcamento_id.label(class="form-label") }}
+                {{ form.orcamento_id(class="form-select") }}
+                {% if form.orcamento_id.errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ form.orcamento_id.errors[0] }}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                {{ form.quantidade.label(class="form-label") }}
+                {{ form.quantidade(class="form-control") }}
+                {% if form.quantidade.errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ form.quantidade.errors[0] }}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                {{ form.total.label(class="form-label") }}
+                <div class="input-group">
+                    <span class="input-group-text">R$</span>
+                    {{ form.total(class="form-control") }}
+                </div>
+            </div>
+            
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="{{ url_for('main.ordens_compra') }}" class="btn btn-secondary me-md-2">
+                    <i class="bi bi-arrow-left me-1"></i>Cancelar
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save me-1"></i>Criar Ordem
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Format currency input
+    new Cleave('#preco', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand',
+        numeralDecimalMark: ',',
+        delimiter: '.',
+        prefix: 'R$ '
+    });
+
+    // Calculate total for orders
+    const orcamentoSelect = document.getElementById('orcamento_id');
+    const quantidadeInput = document.getElementById('quantidade');
+    const totalInput = document.getElementById('total');
+    
+    function calcularTotal() {
+        const selectedOption = orcamentoSelect.options[orcamentoSelect.selectedIndex];
+        const preco = parseFloat(selectedOption.text.split('R$ ')[1]) || 0;
+        const quantidade = parseInt(quantidadeInput.value) || 0;
+        const total = preco * quantidade;
+        
+        totalInput.value = total.toLocaleString('pt-BR', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+    }
+    
+    orcamentoSelect.addEventListener('change', calcularTotal);
+    quantidadeInput.addEventListener('input', calcularTotal);
+    
+    // Initialize calculation
+    calcularTotal();
+});
+</script>
+{% endblock %}
+{% endblock %}

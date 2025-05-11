@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}{% if form.nome_item.data %}Editar{% else %}Novo{% endif %} Orçamento{% endblock %}
+
+{% block content %}
+<div class="card shadow">
+    <div class="card-body">
+        <h2 class="card-title mb-4">
+            <i class="bi bi-cash-stack me-2"></i>{% if form.nome_item.data %}Editar{% else %}Novo{% endif %} Orçamento
+        </h2>
+        
+        <form method="POST" action="{{ url_for('main.novo_orcamento') }}" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.nome_item.label(class="form-label") }}
+                {{ form.nome_item(class="form-control") }}
+                {% if form.nome_item.errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ form.nome_item.errors[0] }}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                {{ form.descricao.label(class="form-label") }}
+                {{ form.descricao(class="form-control", rows=4) }}
+                {% if form.descricao.errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ form.descricao.errors[0] }}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                {{ form.foto.label(class="form-label") }}
+                {{ form.foto(class="form-control") }}
+                {% if form.foto.errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ form.foto.errors[0] }}
+                    </div>
+                {% endif %}
+                {% if form.foto.data and hasattr(form.foto.data, 'filename') %}
+                    <small class="text-muted">Arquivo atual: {{ form.foto.data.filename }}</small>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                {{ form.preco.label(class="form-label") }}
+                <div class="input-group">
+                    <span class="input-group-text">R$</span>
+                    {{ form.preco(class="form-control") }}
+                </div>
+                {% if form.preco.errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ form.preco.errors[0] }}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="{{ url_for('main.orcamentos') }}" class="btn btn-secondary me-md-2">
+                    <i class="bi bi-arrow-left me-1"></i>Cancelar
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save me-1"></i>Salvar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Ordens de Compra{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="bi bi-cart-check-fill me-2"></i>Ordens de Compra</h1>
+    <a href="{{ url_for('main.nova_ordem_compra') }}" class="btn btn-primary">
+        <i class="bi bi-plus-lg me-1"></i>Nova Ordem
+    </a>
+</div>
+
+<div class="card shadow">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço Unitário</th>
+                        <th>Total</th>
+                        <th>Data</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ordem in ordens %}
+                    <tr>
+                        <td>{{ ordem.id }}</td>
+                        <td>{{ ordem.orcamento.nome_item }}</td>
+                        <td>{{ ordem.quantidade }}</td>
+                        <td>R$ {{ "%.2f"|format(ordem.orcamento.preco) }}</td>
+                        <td>R$ {{ "%.2f"|format(ordem.total) }}</td>
+                        <td>{{ ordem.data_criacao.strftime('%d/%m/%Y') }}</td>
+                        <td>
+                            <a href="{{ url_for('main.detalhes_ordem', id=ordem.id) }}" class="btn btn-sm btn-outline-info" data-bs-toggle="tooltip" title="Detalhes">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmarExclusao{{ ordem.id }}" title="Excluir">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <!-- Modal de Confirmação de Exclusão -->
+                    <div class="modal fade" id="confirmarExclusao{{ ordem.id }}" tabindex="-1" aria-labelledby="confirmarExclusaoLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="confirmarExclusaoLabel">Confirmar Exclusão</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Tem certeza que deseja excluir a ordem de compra #{{ ordem.id }}?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <form action="{{ url_for('main.excluir_ordem', id=ordem.id) }}" method="POST">
+                                        <button type="submit" class="btn btn-danger">Excluir</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center">Nenhuma ordem de compra cadastrada</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Ativa tooltips
+document.addEventListener('DOMContentLoaded', function() {
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+});
+</script>
+{% endblock %}

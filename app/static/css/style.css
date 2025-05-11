@@ -1,0 +1,40 @@
+/* Estilos personalizados */
+.sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding-top: 1rem;
+}
+
+.nav-link {
+    border-radius: 0.25rem;
+    margin: 0.25rem 0;
+    padding: 0.5rem 1rem;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.table th {
+    white-space: nowrap;
+}
+
+.img-thumbnail {
+    max-width: 60px;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .sidebar {
+        height: auto;
+        position: relative;
+    }
+    .sidebar-sticky {
+        height: auto;
+    }
+}
