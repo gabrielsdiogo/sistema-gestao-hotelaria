@@ -1,0 +1,37 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.3">
+  <diagram name="Página-1" id="4oyPkkyo7OsAoRIQ7jRE">
+    <mxGraphModel dx="971" dy="516" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Ell63-ouI8Wu7r9cupaq-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Ell63-ouI8Wu7r9cupaq-1" target="Ell63-ouI8Wu7r9cupaq-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ell63-ouI8Wu7r9cupaq-1" value="Receber planilhas dos items a comprar" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="30" y="30" width="70" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Ell63-ouI8Wu7r9cupaq-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Ell63-ouI8Wu7r9cupaq-2" target="Ell63-ouI8Wu7r9cupaq-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ell63-ouI8Wu7r9cupaq-2" value="&lt;div style=&quot;line-height: 100%;&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;Separar items por categoria, para enviar aos fornecedores somente para fazer orçamento&lt;/font&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="155" y="35" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ell63-ouI8Wu7r9cupaq-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Ell63-ouI8Wu7r9cupaq-4" target="Ell63-ouI8Wu7r9cupaq-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ell63-ouI8Wu7r9cupaq-4" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Preenche a planilha recebida inicialmente com os valores retornados por 3 fornecedores&lt;/font&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="155" y="175" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ell63-ouI8Wu7r9cupaq-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Ell63-ouI8Wu7r9cupaq-6" target="Ell63-ouI8Wu7r9cupaq-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ell63-ouI8Wu7r9cupaq-6" value="Envia a planilha geral para o cliente aprovar e escolher os fornecedores" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="355" y="175" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ell63-ouI8Wu7r9cupaq-8" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Inicia a ordem de compra com base nos fornecedores aprovados pelo cliente&lt;/font&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="555" y="175" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
